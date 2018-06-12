@@ -1,0 +1,75 @@
+/* pages/comment/comment.wxss */
+page{
+  background: url(http://dev.open.baobaofo.net/resources/bg1.jpg) #aaa9a9 repeat-y;
+  background-size: 100% auto;
+}
+.cwrap{
+  padding: 20rpx;
+  position: relative;
+}
+.ccon{
+  background: #fff;
+  min-height: 400rpx;
+  padding: 40rpx 36rpx;
+  border-radius: 4px;
+  box-shadow: 5px 5px 4px rgba(70, 70, 70, 0.1);
+}
+.cview{
+  width: 100%;
+  min-height: 120rpx;
+  font-size: 28rpx;
+  color: #333;
+  line-height: 40rpx;
+  display: block;
+}
+.cviewphd{
+  color: #999;
+}
+.cimglist{
+  margin-top: 30rpx;
+  display: -webkit-flex;
+  -webkit-flex-wrap: wrap;
+}
+.cimgli{
+  width: 190rpx;
+  height: 190rpx;
+  border-radius: 4px;
+  margin: 30rpx 30rpx 0 0;
+  overflow: hidden;
+  position: relative;
+}
+.cimgli:nth-of-type(1),
+.cimgli:nth-of-type(2),
+.cimgli:nth-of-type(3){
+  margin-top: 0;
+}
+.cimgli:nth-of-type(3n){
+  margin-right: 0;
+}
+.cimg{
+  width: 100%;
+  height: 100%;
+}
+.cbtncon{
+  width: 124rpx;
+  height: 170rpx;
+  position: fixed;
+  bottom: 60rpx;
+  left: 50%;
+  margin-left: -62rpx;
+}
+.cbtn{
+  width: 100%;
+  height: 100%;
+}
+.overflowshow{
+  overflow: visible;
+}
+
+.cdelicon{
+  width: 40rpx;
+  height: 40rpx;
+  position: absolute;
+  bottom: 10rpx;
+  right: 10rpx;
+}

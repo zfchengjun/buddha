@@ -1,0 +1,69 @@
+<!--pages/buddha/buddha.wxml-->
+<!--toast & loading-->
+<import src="/templates/common.wxml" />
+<template is="toast" data="{{...toastinfo}}"/>
+<template is="loading" data="{{...loadinginfo}}"/>
+
+<!-- catchlongpress  catchtouchstart-->
+<view class="wrap" wx:if="{{currentstate}}" >
+
+  <!--可触摸区域 s-->
+  <view catchlongpress="showGoldBuddha">
+    <image src="/images/lifobg.png" class="imglifobg" mode="widthFix"></image>
+
+    <!--剩余礼佛次数 s-->
+    <view class="leftcount" wx:if="{{currentstate.showleft&&orderinfo.partlevel>0}}">
+      <image src="/images/buddha/left.png" class="imgleft"></image>
+      <text class="left">剩余次数：{{leftlevel}}次</text>
+    </view>
+    <!--剩余礼佛次数 e-->
+
+    <!--佛像 s-->
+    <view class="buddha">
+      <image src="{{'/images/buddha/'+currentstate.buddhaimg.imgsrc}}" class="imgbuddha {{currentstate.buddhaimg.classname}}" mode="widthFix"></image>  
+
+      <!--佛像金身动画-->
+      <block wx:if="{{currentstate.showgoldanim}}">  
+          <canvas canvas-id="buddhacanvas" class="canvasarea"></canvas>
+      </block>
+    </view>
+    <!--佛像 e-->
+
+    <!--佛像供果区域 s-->
+    <view class="buddhathing">
+      <view class="buddhalist">
+        <image src="/images/buddha/buddhabg.png" class="imgbuddhabg"></image>
+        <block wx:if="{{currentstate.showfoods}}">
+          <block wx:for="{{foodslist[currentstate.showfoodsstate]}}" wx:key="id">
+            <image src="{{'/images/buddha/'+item.imgsrc}}" class="{{item.classname}}"></image>
+          </block>
+        </block>    
+      </view>
+
+      <!--烛光&香-烟-->
+      <block wx:if="{{currentstate.showfoodsanim}}">
+        <canvas canvas-id="foodscanvas" class="foodscanvas" style="width:{{bfoodscanvasw+'px'}};height:{{bfoodscanvash+'px'}}"></canvas>
+      </block>
+
+      <!--蜘蛛网-->
+      <image src="/images/buddha/net.png" class="imgnet"  mode="widthFix" wx:if="{{currentstate.shownetimg}}"></image>
+
+      <!--礼佛完成-->
+      <view class="tiptxt" wx:if="{{currentstate.showtiptxt}}" ><text class="tiptxtp">今日已支付</text><text class="tiptxtp">请明日继续</text></view>
+    </view>
+    <!--佛像供果区域 e-->
+  </view>
+  <!--可触摸区域 e-->
+
+    <!--音乐控制区 s-->
+    <view class="musiccon {{audioplay?'on':''}}" catchtap="toggleAudio">
+      <image src="/images/buddha/music.png" class="imgmusic"></image>
+    </view>
+    <!--音乐控制区 e-->
+
+    <!--拂尘按钮-->
+    <image src="/images/buddha/btnfochen.png" class="btnfochen" catchtap="toClear" wx:if="{{currentstate.shownetimg}}"></image>
+
+    <!--礼佛按钮-->    
+    <image src="/images/buddha/btnbuddha.png" class="btnbuddha" catchtap="toPay" wx:if="{{currentstate.showbuddhabtn}}" ></image>
+</view>

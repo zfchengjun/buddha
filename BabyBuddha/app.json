@@ -1,0 +1,21 @@
+{
+  "pages": [    
+    "pages/index/index",
+    "pages/buddhaSelect/buddhaSelect",
+    "pages/pay/pay",
+    "pages/buddha/buddha",
+    "pages/buddhaOver/buddhaOver",
+    "pages/orderList/orderList",
+    "pages/reviews/reviews",
+    "pages/usercenter/usercenter",
+    "pages/comment/comment"
+    
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#ffffff",
+    "enablePullDownRefresh": false
+  }
+}

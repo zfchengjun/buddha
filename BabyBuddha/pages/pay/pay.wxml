@@ -1,0 +1,65 @@
+<!--pages/pay/pay.wxml-->
+<!--toast & loading-->
+<import src="/templates/common.wxml" />
+<template is="toast" data="{{...toastinfo}}"/>
+<template is="loading" data="{{...loadinginfo}}"/>
+
+<view class="wrap">
+  <image src="/images/lifobg.png" class="imglifobg" mode="widthFix"></image>
+  <!--顶部区域 s-->
+  <view class="header">
+    <!--tab区域 s-->
+    <view class="tablist" wx:if="{{partlevel<1&&tablist.length==2}}">
+      <block wx:for="{{tablist}}" wx:key="id">
+        <view class="tabli {{item.id==tabid?'on':''}}" data-id="{{item.id}}" catchtap="selectWay">{{item.title}}</view>
+      </block>
+    </view>
+    <!--tab区域 e-->
+
+    <!--7天礼佛区域 s-->
+    <view class="lblist" wx:if="{{tabid==1}}">
+      <block wx:for="{{partsteplist}}" wx:key="id">
+        <view class="lbli {{item.checked?'on':''}}">
+          <view class="lbnum">{{item.times}}</view>
+          <text class="lbname">{{item.title}}</text>
+          <view class="lbstate">
+            <image src="/images/checked.png" class="imgchecked"></image>
+            <image src="/images/payamount.png" class="imgpayamount"></image>
+            <text class="lbmoney">{{item.money}}</text>
+          </view>
+        </view>
+      </block>     
+    </view>
+    <!--7天礼佛区域 e-->
+
+    <!--1天礼佛区域 s-->
+    <view class="blblist" wx:if="{{tabid==0}}">
+      <block wx:for="{{partsteplist}}" wx:key="id">
+        <text class="blbli">{{item.title}}</text>
+      </block>
+      <view class="blbamount"><text class="blbyen">￥</text>{{onetotalinfo.money}}</view>
+    </view>
+    <!--1天礼佛区域 e-->
+  </view>
+  <!--顶部区域 e-->
+
+  <!--底部区域 s-->
+  <view class="footer">
+    <view class="footercon">
+       <text class="tip {{tabid==1&&partlevel>0&&partlevel<maxdaycount-1?'umarb':''}}" wx:if="{{tabid==1}}">累计支付{{maxdaycount}}次，即可购得宝宝佛玉饰一件</text> 
+       <text class="tip" wx:if="{{tabid==0}}">只需一次，即可购得宝宝佛玉饰一件</text> 
+      <view class="address" wx:if="{{tabid==0||partlevel==maxdaycount-1}}" catchtap="getAddrInfo">        
+        <block wx:if="{{addrinfo}}">
+          <text class="addrname">{{addrinfo.username+" "+addrinfo.tel}}</text>
+          <text class="addrname">{{addrinfo.address}}</text>
+        </block>
+        <block wx:if="{{!addrinfo}}">
+          <text class="addrtitle">收货地址</text>
+          <text class="addrname">请选择收货地址</text>
+        </block>
+      </view>
+      <image src="/images/btnpay.png" class="imgbtnpay" catchtap="toPayForWechat"></image>
+    </view>
+  </view>
+  <!--底部区域 e-->
+</view>

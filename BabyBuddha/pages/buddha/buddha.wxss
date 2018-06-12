@@ -1,0 +1,206 @@
+/* pages/buddha/buddha.wxss */
+
+/* .wrap {
+  min-height: 1217rpx;
+} */
+
+
+.leftcount {
+  position: absolute;
+  top: 36rpx;
+  left: 30rpx;
+}
+
+.imgleft {
+  width: 72rpx;
+  height: 40rpx;
+  margin: 0 auto;
+}
+
+.left {
+  font-size: 18rpx;
+  color: #dfbb27;
+  line-height: 20px;
+  display: block;
+}
+
+.musiccon {
+  width: 92rpx;
+  height: 92rpx;
+  position: absolute;
+  top: 24rpx;
+  right: 20rpx;
+}
+
+.musiccon.on {
+  -webkit-animation: loading 2s linear infinite;
+}
+
+.imgmusic {
+  width: 32rpx;
+  height: 44rpx;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -16rpx;
+  margin-top: -22rpx;
+}
+
+.buddha {
+  width: 100%;
+  height: 858rpx;
+  position: absolute;
+  /* top: 140rpx; */
+  top: 120rpx;
+  left: 0;
+}
+
+.imgbuddha {
+  width: 100%;
+  height: 858rpx;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.imgbuddhaoff {
+}
+
+.imgbuddhaon {
+}
+
+.imgbuddhagold {
+}
+
+.buddhathing {
+  width: 100%;
+  height: 404rpx;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.buddhalist {
+  position: absolute;
+  bottom: 26rpx;
+  left: 50%;
+  margin-left: -364rpx;
+}
+
+.imgbuddhabg {
+  width: 716rpx;
+  height: 324rpx;
+  margin: 0 auto;
+}
+
+.levelimg {
+  position: absolute;
+}
+
+.levelon1, .levelon2 {
+  width: 133rpx;
+  height: 171rpx;
+  bottom: 214rpx;
+}
+
+.levelon1 {
+  left: 28rpx;
+}
+
+.levelon2 {
+  right: -4rpx;
+}
+
+.levelon5, .levelon6, .leveloff5, .leveloff6 {
+  width: 97rpx;
+  height: 80rpx;
+  bottom: 14rpx;
+}
+
+.levelon5, .leveloff5 {
+  left: 34rpx;
+}
+
+.levelon6, .leveloff6 {
+  right: 34rpx;
+}
+
+.leveloff7, .levelon7 {
+  width: 78rpx;
+  height: 181rpx;
+  bottom: 254rpx;
+  left: 50%;
+  margin-left: -38rpx;
+}
+
+.leveloff1, .leveloff2 {
+  width: 151rpx;
+  height: 80rpx;
+  bottom: 236rpx;
+}
+
+.leveloff1 {
+  left: 18rpx;
+}
+
+.leveloff2 {
+  right: -10rpx;
+}
+
+.imgnet {
+  width: 100%;
+  height: 454rpx;
+  position: absolute;
+  bottom: -40rpx;
+  left: 0;
+}
+
+.btnfochen {
+  width: 126rpx;
+  height: 126rpx;
+  position: absolute;
+  bottom: 34rpx;
+  left: 50%;
+  margin-left: -63rpx;
+}
+
+.btnbuddha {
+  width: 152rpx;
+  height: 152rpx;
+  position: absolute;
+  bottom: 18rpx;
+  left: 50%;
+  margin-left: -76rpx;
+}
+
+.tiptxt {
+  width: 100%;
+  font-size: 26rpx;
+  color: #fff;
+  text-align: center;
+  line-height: 40rpx;
+  position: absolute;
+  bottom: 30rpx;
+  left: 0;
+}
+
+.tiptxtp {
+  display: block;
+}
+
+.canvasarea{
+  width: 100%;
+  height: 100%;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.foodscanvas{
+  width: 100%;
+  display: block;
+  position: absolute;
+  bottom:26rpx;
+  left: 0;
+}
+
