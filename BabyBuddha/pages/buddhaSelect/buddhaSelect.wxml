@@ -1,0 +1,16 @@
+<!--buddhaSelect.wxml-->
+<!--toast & loading-->
+<import src="/templates/common.wxml" />
+<template is="toast" data="{{...toastinfo}}"/>
+<template is="loading" data="{{...loadinginfo}}"/>
+
+<view class='wrap'>
+  <block wx:for="{{plist}}" wx:key="id">
+    <block wx:if="{{item.status==1}}">
+      <image src="/images/line.png" class='lineimg' wx:if="{{index>0}}"></image>
+      <view class="btnarea" data-id="{{item.id}}" catchtap='toBuddha'>
+        <image src="{{item.pic}}" title="{{item.title}}" class='buddhaimg' mode="widthFix"></image>
+      </view>
+    </block> 
+  </block>
+</view>

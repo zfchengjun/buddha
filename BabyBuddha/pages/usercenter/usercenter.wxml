@@ -1,0 +1,47 @@
+<!--pages/usercenter/usercenter.wxml-->
+<!--toast & loading-->
+<import src="/templates/common.wxml" />
+<template is="toast" data="{{...toastinfo}}"/>
+<template is="loading" data="{{...loadinginfo}}"/>
+
+<!--底部Tab s-->
+<view class='foottablist'>
+  <view class='foottabli' data-num="1" catchtap="toTabPage">
+    <image src='/images/home0.png' class='foottabicon'></image>
+    <text class='foottabtxt'>宝宝佛</text>
+  </view>
+  <view class='foottabli' data-num="2" catchtap="toTabPage">
+    <image src='/images/reviews0.png' class='foottabicon'></image>
+    <text class='foottabtxt'>点评</text>
+  </view>
+  <view class='foottabli on'>
+    <image src='/images/user1.png' class='foottabicon'></image>
+    <text class='foottabtxt'>我的</text>
+  </view>
+</view>
+<!--底部Tab e-->
+
+<view class='userwrap tabwrap'>
+  <!--顶部信息 s-->
+  <view class="userheader">
+    <view class='userheadcon'><image src='{{headimg}}' class="userheadimg"></image></view>
+    <view class="userinfo">
+      <text class='username'>{{nickname}}</text>
+    </view>
+  </view>
+  <!--顶部信息 e-->
+  <!--功能列表 s-->
+  <view class='infolist'>
+    <view class="infoli flex" catchtap="openBuddhaRecord">
+      <image src="/images/iconrecord.png" class="iconli"></image>
+      <view class="infotxt flex1">我的宝宝佛</view>
+      <view class="iconright"></view>
+    </view>
+    <view class="infoli flex" catchtap="openMyreviews">
+      <image src="/images/iconreviews.png" class="iconli"></image>
+      <view class="infotxt flex1">我的点评</view>
+      <view class="iconright"></view>
+    </view>
+  </view>
+  <!--功能列表 e-->
+</view>

@@ -1,0 +1,20 @@
+<!--toast-->
+<template name="toast">
+  <view class="toastcon" wx:if="{{showflag}}">
+    <view class="toastbox">
+      <icon type="success" size="60" color="#ffffff" class="alerttipicon" wx:if="{{showaliconflag}}" />
+      <view class="toastmsg">{{msg}}</view>
+    </view>
+  </view>
+</template>
+
+<!--loading-->
+<template name="loading">
+  <view class="loadingcon" wx:if="{{showflag}}">
+    <view class="loadingbox">
+      <view class="loadingicon"></view>
+      <view class="loadingmsg">加载中</view>
+    </view>
+  </view>
+</template>
+

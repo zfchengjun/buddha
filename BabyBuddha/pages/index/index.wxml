@@ -1,0 +1,67 @@
+<!--index.wxml-->
+<!--toast & loading-->
+<import src="/templates/common.wxml" />
+<template is="toast" data="{{...toastinfo}}"/>
+<template is="loading" data="{{...loadinginfo}}"/>
+
+
+<!--底部Tab s-->
+<view class='foottablist'>
+  <view class='foottabli on'>
+    <image src='/images/home1.png' class='foottabicon'></image>
+    <text class='foottabtxt'>宝宝佛</text>
+  </view>
+  <view class='foottabli' data-num="2" catchtap="toTabPage">
+    <image src='/images/reviews0.png' class='foottabicon'></image>
+    <text class='foottabtxt'>点评</text>
+  </view>
+  <view class='foottabli' data-num="3" catchtap="toTabPage">
+    <image src='/images/user0.png' class='foottabicon'></image>
+    <text class='foottabtxt'>我的</text>
+  </view>
+</view>
+<!--底部Tab e-->
+
+<view class='wrap tabwrap'>
+  <!-- <image src="/images/btntomy.png" class='btntomy' catchtap='toOrderList'></image> -->
+  <image src="/images/theme.png" class='themeimg' mode="widthFix"></image>
+  <view class="debug debugopen" catchlongpress="openDebug"></view>
+  <view class="debug debugclose" catchlongpress="closeDebug"></view>
+
+  <!--video区域 s-->
+  <view class='videocon'>
+    <video id="myVideo" src="{{vediopath}}" controls="false" objectFit="fill" class='video' hidden='{{!showvedioflag}}' binderror="vedioOnloadFail" bindended="vedioPlayEnd">
+    </video>
+    <image src="/images/videostart.png" class='videostartimg' mode="widthFix" catchtap="vedioPlayStart"></image>
+  </view>
+  <!--video区域 e-->
+
+  <!--banner图 autoplay="true"  s-->
+   <swiper class="slide-wrapper" indicator-dots="true" indicator-color="#000" indicator-active-color="#fff" 
+autoplay="true" circular="true">
+    <block wx:for="{{bannerlist}}" wx:key="id">
+      <swiper-item class='slide-inner'>
+        <image src="{{item.url}}" class="slide-image" mode="widthFix" data-href="{{item.linkurl}}" catchtap="bindBannerClick" />
+      </swiper-item>   
+    </block>
+  </swiper>     
+  <!--banner图 e-->
+
+  <view class='footcon'>
+    <image src="/images/footbg.png" class='footbgimg' mode="widthFix"></image>
+    <image src="/images/btnbuddha.png" class='btnbuddha' catchtap="toBuddhaSelect"></image>
+  </view>
+
+  <!--向上滑动提示箭头 s-->
+
+  <!--向上滑动提示箭头 e-->
+  <view class='slidedowncon slideInDown' wx:if="{{showslideimg}}">    
+    <image class="slidedownimg" src="/images/slidedown.png"></image>
+  </view>
+  <!--客服按钮 s-->
+  <button class="cs_button" open-type="contact" session-from="buddha-kf">
+    <image class="cs_image" src="/images/customer.png"></image>
+  </button> 
+  <!--客服按钮 e-->
+</view>
+

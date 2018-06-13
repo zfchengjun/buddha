@@ -1,0 +1,132 @@
+/* index.wxss */
+
+.wrap {
+  position: relative;
+}
+
+.themeimg {
+  width: 100%;
+  height: 826rpx;
+}
+
+.btntomy {
+  width: 182rpx;
+  height: 48rpx;
+  position: absolute;
+  top: 28rpx;
+  right: 28rpx;
+}
+
+.videocon {
+  width: 100%;
+  position: relative;
+}
+
+.video {
+  width: 100%;
+  height: 100%;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.videostartimg {
+  width: 100%;
+}
+
+.controls {
+  position: relative;
+  top: 0;
+  height: 100%;
+  display: flex;
+}
+
+.play {
+  flex: 1;
+  height: 100%;
+}
+
+.img {
+  width: 100%;
+}
+
+.footcon {
+  width: 100%;
+  position: relative;
+}
+
+.footbgimg {
+  width: 100%;
+}
+
+.btnbuddha {
+  width: 133rpx;
+  height: 171rpx;
+  margin-top: -30rpx;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+}
+
+/*debug*/
+
+.debug {
+  width: 200rpx;
+  height: 60rpx;
+  background: none;
+  position: absolute;
+}
+
+.debugopen {
+  top: 80rpx;
+  left: 60rpx;
+}
+
+.debugclose {
+  top: 160rpx;
+  left: 110rpx;
+}
+
+/*轮播图*/
+
+.slide-wrapper {
+  height: 494rpx;
+}
+
+.slide-inner {
+  width: 100%;
+  height: 100%;
+}
+
+.slide-image {
+  height: 100%;
+  width: 100%;
+  background-size: auto 100%;
+  background-position: top center;
+  background-repeat: no-repeat;
+}
+
+.slidedowncon{
+  position: fixed;
+  bottom: 135rpx;
+  left: 50%;
+  margin-left: -40rpx;
+}
+.slidedownimg{
+  width: 80rpx;
+  height: 59rpx;
+}
+.slideInDown {
+  -webkit-animation: slideInDown 2s linear infinite;
+}
+@-webkit-keyframes slideInDown {
+  from {
+    -webkit-transform: translate3d(0, -100%, 0);
+    visibility: visible;
+  }
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+  }
+}

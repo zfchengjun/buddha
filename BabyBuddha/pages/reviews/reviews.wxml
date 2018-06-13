@@ -1,0 +1,137 @@
+<!--pages/reviews/reviews.wxml-->
+<!--toast & loading-->
+<import src="/templates/common.wxml" />
+<template is="toast" data="{{...toastinfo}}"/>
+<template is="loading" data="{{...loadinginfo}}"/>
+
+
+<!--底部Tab s-->
+<view class='foottablist' hidden="{{isfrommyself}}">
+  <view class='foottabli' data-num="1" catchtap="toTabPage">
+    <image src='/images/home0.png' class='foottabicon'></image>
+    <text class='foottabtxt'>宝宝佛</text>
+  </view>
+  <view class='foottabli on'>
+    <image src='/images/reviews1.png' class='foottabicon'></image>
+    <text class='foottabtxt'>点评</text>
+  </view>
+  <view class='foottabli' data-num="3" catchtap="toTabPage">
+    <image src='/images/user0.png' class='foottabicon'></image>
+    <text class='foottabtxt'>我的</text>
+  </view>
+</view>
+<!--底部Tab e-->
+
+<view class='rmwrap tabwrap' catchtap="hideInputtxt">
+  <view class='rmhead' wx:if="{{isfrommyself}}">
+    <image class='rmheadimg' src='/images/rmheadselfimg.jpg' mode="widthFix"></image>
+  </view>
+  <view wx:else>
+    <view class='rmhead'>
+      <image class='rmheadimg' src='/images/rmheadimg.jpg' mode="widthFix"></image>
+      <!--我要说按钮-->
+      <image class='rmbtn' src='/images/rmbtnimg.png' catchtap="toComment" wx:if="{{uid}}"></image>
+    </view>
+    <view class='rmtongji'>
+      <text class='rmtongjilabel'>访问人数：</text>
+      <text class='rmtongjitxt'>{{usercount||0}}</text>
+      <text class='rmtongjilabel'>留言：</text>
+      <text class='rmtongjitxt'>{{commentcount||0}}</text>
+    </view>
+  </view>
+
+  <!--朋友圈列表 s-->
+  <view class='rmlist {{isfrommyself?"":"paddingt0"}}' wx:if="{{dyncinfo&&dyncinfo.plist.length>0}}">
+    <block wx:for="{{dyncinfo.plist}}" wx:for-item="pitem" wx:for-index="pindex" wx:key="id">
+      <!--单条朋友圈 s-->
+      <view class='rmli' wx:if="{{pitem.status}}">
+        <!--用户信息 s-->
+        <view class='rmlihead flex'>
+          <view class="moreOp" data-pindex="{{pindex}}"  catchtap='showPitemOprMenu' wx:if="{{pitem.uid==uid || isadmin || isfrommyself}}">...</view>
+          <view class='rmliheadimgcon'><image class='rmliheadimg' src='{{pitem.head_img||defaultheadimg}}'></image></view>
+          <view class='rmliheadinfo flex1'>
+            <view class='rmliname ellipsis'>{{pitem.nick_name||"匿名"}}</view>
+            <view class='rmlitime'>{{pitem.post_date+" "+pitem.post_time}}</view>
+          </view>
+        </view>
+        <!--用户信息 e-->
+
+        <!--发言内容区域 s-->
+        <view class='rmlidesccon'>
+          <view class='rmlidesc'><text class="auditstate {{'auditstate'+pitem.audit}}" wx:if="{{isadmin && pitem.audit!=1}}">{{"["+auditinfo["audit"+pitem.audit]+"]"}}</text>{{pitem.content}}</view>
+          <!-- <view class='rmtoggletxt'>ellipsis3 全文</view> -->
+          <!--图片列表 s-->
+          <view class='rmimglist'>
+            <block wx:if="{{pitem.imgs&&pitem.imgs.length>0}}">
+              <block wx:for="{{pitem.imgs}}" wx:for-item="imgitem" wx:for-index="cindex" wx:key="*this" wx:if="{{pitem.imgs.length>1}}">
+                <view class='rmimgli' data-pindex="{{pindex}}" data-cindex="{{cindex}}" catchtap="previewImage">
+                  <image class='rmimg' src='{{imgitem}}' mode='aspectFill'></image>
+                </view>
+              </block>
+              <view class='rmimglisingle' style="background-image:url('{{pitem.imgs[0]}}')" wx:if="{{pitem.imgs.length==1}}" data-pindex="{{pindex}}" data-cindex="0" catchtap="previewImage"></view>  
+            </block>       
+          </view>
+          <!--图片列表 e-->
+        </view>
+        <!--发言内容区域 e-->
+
+        <!--评论点赞区域 s-->
+        <view class='rmbottomcon'>
+          <!--点赞操作区域 s-->
+          <view class='rmmsgcon flexend'>
+            <image class='rmmsgimg' src="/images/iconmsg.png" data-pindex="{{pindex}}" catchtap="toggleMsgoprcon"></image>
+            <view class='rmmsgoprcon'>
+              <view class='rmmsgoprlist flex {{pitem.showmsgoprflag?"slideleft":""}} {{pitem.closemsgoprflag?"slideright":""}}'>
+                <view class='rmmsgopr flex1 boxcenter' data-pindex="{{pindex}}" catchtap="toggleLikeed"><image class='rmmsgiconimg' src="/images/iconlike.png"></image>{{pitem.isliked?"取消":"赞"}}</view>
+                <view class='rmmsgopr flex1 boxcenter' data-pindex="{{pindex}}" catchtap="showInputTxt"><image class='rmmsgiconimg' src="/images/iconcomment.png"></image>评论</view>
+              </view>
+            </view>
+          </view>
+          <!--点赞操作区域 e-->
+
+          <!--点赞评论显示区域 s-->
+          <view class='rmpanel' wx:if="{{(pitem.likeList&&pitem.likeList.length>0)||(pitem.replyList&&pitem.replyList.length>0)}}">
+            <!--点赞显示区域 s-->
+            <view class='rmlikecon' wx:if="{{pitem.likeList&&pitem.likeList.length>0}}">
+              <image class='rmfavioimg' src="/images/iconfavio.png"></image>
+              <block wx:for="{{pitem.likeList}}" wx:for-item="citem" wx:for-index="cindex" wx:key="id">{{cindex?"，":""}}<text class='rmlike'>{{citem.nick_name||"匿名"}}</text>
+              </block>
+            </view>
+            <!--点赞显示区域 e-->
+
+            <view class="rmlikeline" wx:if="{{(pitem.likeList&&pitem.likeList.length>0)&&(pitem.replyList&&pitem.replyList.length>0)}}"></view>
+
+            <!--评论显示区域 s-->
+            <view class='rmclist' wx:if="{{pitem.replyList&&pitem.replyList.length>0}}">
+              <block wx:for="{{pitem.replyList}}" wx:for-item="citem" wx:for-index="cindex" wx:key="id">
+                <view class='rmcli' data-pindex="{{pindex}}" data-cindex="{{cindex}}" catchtap='showCitemOprMenu' wx:if="{{citem.status}}"><text class='rmcliname'>{{(citem.nick_name||"匿名")+"："}}</text><text class="auditstate {{'auditstate'+citem.audit}}" wx:if="{{isadmin && citem.audit!=1}}">{{"["+auditinfo["audit"+citem.audit]+"]"}}</text>{{citem.content||""}}</view>
+              </block>
+            </view>
+            <!--评论显示区域 e-->
+          </view>
+          <!--点赞评论显示区域 e-->
+        </view>
+        <!--评论点赞区域 e-->
+      </view>
+      <!--单条朋友圈 e-->
+    </block>
+  </view>
+  <!--朋友圈列表 e-->
+
+  <view wx:if="{{dyncinfo.nodataflag}}" class="nodatacon">
+    <image src="/images/nodata.png" class="nodataimg"></image>
+    <view class="nodata">暂无数据</view>
+  </view>
+
+  <view class="theend" wx:if="{{dyncinfo.theendflag}}">
+    <view class="theendline"></view>
+    <view class="theendlabel">没有更多了</view>
+  </view>
+</view>
+
+<!--评论输入区域  fixed="true" bindblur="hideInputtxt" s-->
+<view class='footinput' hidden="{{hideinputtxt}}">
+  <textarea class='inputtxt' placeholder="评论" value="{{inputtxt||''}}" placeholder-class="cviewphd" auto-focus="{{!hideinputtxt}}" maxlength="1000" auto-height bindconfirm="toReply"></textarea>
+</view>
+<!--评论输入区域 e-->
+ 

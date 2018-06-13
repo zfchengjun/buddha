@@ -1,0 +1,56 @@
+/* pages/orderList/orderList.wxss */
+.orderlistcon{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.scrollview{
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.orderlist{
+  padding: 40rpx 50rpx 40rpx 54rpx;
+}
+.orderli{
+  font-size: 32rpx;
+  color: #999;
+  line-height: 42rpx;
+  background: #fff;
+  border-radius: 4px;
+  height: 180rpx;
+  display: -webkit-flex;
+  -webkit-align-items: center;
+  padding: 0 24rpx 0 32rpx;
+  box-sizing: border-box;
+  margin-top: 40rpx;
+  box-shadow: 5px 5px 4px rgba(70,70,70,0.1);
+}
+
+.orderli:nth-of-type(1){
+  margin-top: 0;
+}
+.imgbuddha{
+  width: 132rpx;
+  height: 132rpx;
+}
+.orderno{
+  -webkit-flex: 1;  
+  margin: 0 34rpx;
+}
+.orderdesc{
+  text-align: right;
+}
+.orderds{
+  display: block;
+}
+.nodata{
+  font-size: 28rpx;
+  color: #333;
+  text-align: center;
+  padding-top: 360rpx;
+}
+
